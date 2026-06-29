@@ -1,0 +1,14 @@
+---
+- name: Create file from extra vars
+  hosts: all
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Create custom file
+      ansible.builtin.copy:
+        dest: "{{ file_dest }}"
+        content: "{{ file_content }}"
+        owner: root
+        group: root
+        mode: '0644'
