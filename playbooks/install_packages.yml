@@ -1,0 +1,14 @@
+---
+- name: Install packages
+  hosts: servers
+  become: true
+  gather_facts: false
+  
+  vars_files:
+    - ../vars/packages.yml
+
+  tasks:
+    - name: Install
+      ansible.builtin.dnf:
+        name: "{{ packages }}"
+        state: present
